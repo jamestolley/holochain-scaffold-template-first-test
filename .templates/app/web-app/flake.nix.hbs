@@ -1,0 +1,14 @@
+{{#merge_scope previous_file_content "devShells.default = pkgs.mkShell {"}}
+              inputsFrom = [ holochain-flake.devShells.${system}.holonix ];
+
+              packages = [
+                pkgs.nodejs-18_x
+                pkgs.cargo-nextest
+              ];
+
+              shellHook = ''
+                unset CARGO_TARGET_DIR
+                unset CARGO_HOME
+              '';
+{{/merge_scope}}
+
